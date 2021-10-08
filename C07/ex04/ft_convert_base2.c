@@ -10,95 +10,77 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_valid(char *s)
+int	is_valid(char *base)
 {
 	int	i;
 	int	j;
+	int	is_space;
 
 	i = 0;
-	while (s[i])
-		i++;
-	if (i < 2)
-		return (0);
-	i = 0;
-	while (s[i])
+	while (base[i])
 	{
+		is_space = ((base[i] >= '\t' && base[i] <= '\r') || base[i] == ' ');
+		if (base[i] == '+' || base[i] == '-' || is_space)
+			return (0);
 		j = i + 1;
-		if (s[i] == '-' || s[i] == '+')
-			return (0);
-		if (s[i] >= 9 && s[i] <= 13)
-			return (0);
-		while (s[j])
+		while (base[j])
 		{
-			if (s[i] == s[j])
+			if (base[j] == base[i])
 				return (0);
 			j++;
 		}
 		i++;
 	}
-	return (i);
-}
-
-int	is_belong(char c, char *base)
-{
-	int	i;
-
-	i = 0;
-	while (base[i])
-	{
-		if (c == base[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	ft_is_space(char c)
-{
-	if ((c >= 9 && c <= 13) || c == 32)
-		return (1);
-	return (0);
-}
-
-int	position(char c, char *base)
-{
-	int	i;
-
-	i = 0;
-	while (base[i])
-	{
-		if (c == base[i])
-			return (i);
-		i++;
-	}
-	return (i);
-}
-
-int	ft_atoi_base(char *str, char *base)
-{
-	int	sign;
-	int	i;
-	int	to_return;
-	int	len_base;
-
-	i = 0;
-	while (base[i])
-		i++;
-	len_base = i;
-	if (!is_valid(base))
+	if (i < 2)
 		return (0);
-	to_return = 0;
+	return (i);
+}
+
+int	position(char *base, char c)
+{
+	int	i;
+
+	if (!c)
+		return (-1);
 	i = 0;
-	sign = 1;
-	while (ft_is_space(str[i]))
+	while (base[i] && base[i] != c)
 		i++;
-	while (str[i] == '-' || str[i] == '+')
+	if (base[i])
+		return (i);
+	else
+		return (-1);
+}
+
+char	*get_sign(int *sign, char *str)
+{
+	while (*str == '-' || *str == '+')
 	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
+		if (*str == '-')
+			*sign *= -1;
+		str++;
 	}
-	while (is_belong(str[i], base))
-		to_return = to_return * len_base + position(str[i++], base);
-	return (to_return * sign);
+	return (str);
+}
+
+int	ft_atoi_base(char *str, char *base, int len)
+{
+	int		sign;
+	int		res;
+	char	c;
+
+	while ((*str >= '\t' && *str <= '\r') || *str == ' ')
+		str++;
+	sign = -1;
+	str = get_sign(&sign, str);
+	res = 0;
+	while (1)
+	{
+		c = position(base, *str);
+		if (c < 0)
+			break ;
+		res *= len;
+		res -= c;
+		str++;
+	}
+	return (res * sign);
 }

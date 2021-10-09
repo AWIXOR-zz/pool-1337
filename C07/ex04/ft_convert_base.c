@@ -6,14 +6,14 @@
 /*   By: eaouassa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 12:08:03 by eaouassa          #+#    #+#             */
-/*   Updated: 2021/10/07 10:30:19 by eaouassa         ###   ########.fr       */
+/*   Updated: 2021/10/09 09:27:27 by eaouassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	ft_atoi_base(char *str, char *base, int len);
 int	is_valid(char *s);
+int	ft_atoi_base(char *str, char *base, int len);
 
 int	number_len(int number, int len_base)
 {
@@ -35,7 +35,7 @@ char	*ft_convert_to_number(int number, char *base, int len_base)
 	int		is_negative;
 
 	is_negative = (number < 0);
-	nb_size = (nbr <= 0) + number_len(number, len_base);
+	nb_size = (number <= 0) + number_len(number, len_base);
 	to_return = malloc(sizeof(char) * nb_size);
 	to_return[0] = '-';
 	to_return[--nb_size] = 0;
@@ -66,7 +66,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 #include <stdio.h>
 int main(void)
 {
-	char *res = ft_convert_base(" 5-5","0123456789","0123456789");
-  printf("%s", res);
-	printf("%s",ft_convert_base("-1111","01","0123456789abcdef"));
+	char *res = ft_convert_base("8-7","0123456789","0123456789");
+	printf("%s\n", res);
+	printf("%s",ft_convert_base("-1100","01","0123456789abcdef"));
 }*/

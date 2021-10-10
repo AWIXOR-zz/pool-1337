@@ -6,7 +6,7 @@
 /*   By: eaouassa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 14:47:21 by eaouassa          #+#    #+#             */
-/*   Updated: 2021/10/10 15:15:17 by eaouassa         ###   ########.fr       */
+/*   Updated: 2021/10/10 18:14:32 by eaouassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,17 @@ int	has_char(char *str, char c)
 int	count_words(char *str, char *charset)
 {
 	int	count;
+	int	i;
 
+	i = 0;
 	count = 0;
-	while (*str & !has_char(charset, *str))
+	while (str[i])
 	{
+		while (str[i] && !has_char(charset, str[i]))
+			i++;
+		while (has_char(charset, str[i]))
+			i++;
 		count++;
-		str++;
 	}
 	return (count);
 }
@@ -74,7 +79,7 @@ char	**ft_split(char *str, char *charset)
 	while (has_char(charset, *str))
 		str++;
 	words_count = count_words(str, charset);
-	result = malloc(sizeof(char) * words_count);
+	result = malloc(sizeof(char *) * (words_count + 1));
 	if (!result)
 		return (0);
 	result[words_count] = 0;
@@ -86,18 +91,17 @@ char	**ft_split(char *str, char *charset)
 	}
 	return (result);
 }
+/*
 #include <stdio.h>
 int main()
 {	
 	int i = 0;
-	char **strs = ft_split("sdhfjs-asdf-asdf--asdf","-");
+	char **strs = ft_split("abcd--efjh-asdf--hocuine","-");
 	if (!strs)
 		return 0;
 	while(strs[i])
 	{
-		printf("--> %s", strs[i]);
-		free(strs[i]);
+		printf("--> %s\n", strs[i]);
 		i++;
 	}
-	free(strs);
-}
+}*/

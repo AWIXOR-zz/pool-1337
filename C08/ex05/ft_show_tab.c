@@ -6,14 +6,12 @@
 /*   By: eaouassa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 10:30:53 by eaouassa          #+#    #+#             */
-/*   Updated: 2021/10/10 11:54:51 by eaouassa         ###   ########.fr       */
+/*   Updated: 2021/10/11 17:39:39 by eaouassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "ft_stock_str.h"
-
-struct  s_stock_str *ft_strs_to_tab(int ac, char **av);
 
 void	ft_print(char *str)
 {
@@ -60,20 +58,18 @@ void	ft_show_tab(struct s_stock_str *par)
 	int	i;
 
 	i = 0;
-	while (par[i].str[0])
+	while (par[i].str)
 	{
-		//print str
 		ft_print(par[i].str);
-		//pritn size
 		ft_putnbr(par[i].size);
 		write(1, "\n", 1);
-		//print copy
 		ft_print(par[i].copy);
 		i++;
 	}
 }
+/*
 int main(int ac, char **av)
 {
 	struct s_stock_str *str = ft_strs_to_tab(ac-1, av+1); 
 	ft_show_tab(str);
-}
+}*/

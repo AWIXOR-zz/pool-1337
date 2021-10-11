@@ -6,11 +6,11 @@
 /*   By: eaouassa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 18:23:52 by eaouassa          #+#    #+#             */
-/*   Updated: 2021/10/05 18:35:00 by eaouassa         ###   ########.fr       */
+/*   Updated: 2021/10/11 17:33:10 by eaouassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_ABS_H
 # define FT_ABS_H
-# define ABS(N) ((N<0)?(-N):(N))
+# define ABS(Value) ((Value<0)?(-Value):(Value))
 #endif

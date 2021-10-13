@@ -6,7 +6,7 @@
 /*   By: eaouassa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 10:48:09 by eaouassa          #+#    #+#             */
-/*   Updated: 2021/10/09 13:59:07 by eaouassa         ###   ########.fr       */
+/*   Updated: 2021/10/13 17:34:03 by eaouassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include<stdlib.h>
@@ -90,13 +90,12 @@ char	**ft_split(char *str, char *charset)
 	}
 	return (result);
 }
-/*
 #include<stdio.h>
 
 int main()
 {
 	int i = 0;
-    char **strs = ft_split("flfg--fghjdf-dfjkdjkf-fjkg" , "-");
+    char **strs = ft_split(" Dt4t5bPdv5vV6Bwr9NfwziIa ybS85t9JFxooxZTxmPbXfz", "naLv5");
 	if(!strs)
 		return 1;
 	while(strs[i])
@@ -106,4 +105,4 @@ int main()
 		i++;
 	}
 	free(strs);
-}*/
+}

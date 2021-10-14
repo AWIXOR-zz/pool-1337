@@ -6,7 +6,7 @@
 #    By: eaouassa <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/11 11:32:59 by eaouassa          #+#    #+#              #
-#    Updated: 2021/10/11 11:50:10 by eaouassa         ###   ########.fr        #
+#    Updated: 2021/10/13 16:50:58 by eaouassa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,4 +36,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY: all clean re
+.PHONY: all clean fclean re
